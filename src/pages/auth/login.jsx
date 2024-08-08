@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../../auth/Private";
 import service from "../../../service/service.config";
+import { AuthContext } from "../../context/auth.context";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userType, setUserType] = useState("user"); // Agrega userType al estado
-  const { authenticateUser } = useAuth();
+  const { authenticateUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,7 +22,7 @@ const Login = () => {
       if (userType === "business") {
         navigate("/published-offers");
       } else {
-        navigate("/all-offers");
+        navigate("/offers");
       }
     } catch (error) {
       console.error(error); // Maneja errores de inicio de sesión
