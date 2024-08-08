@@ -9,7 +9,7 @@ function AuthWrapper(props) {
   const [isAuthenticating, setIsAuthenticating] = useState(true);
   const [userType, setUserType] = useState(null);
   const authenticateUser = async () => {
-    console.log("intentando validar el token");
+    
     const authToken = localStorage.getItem("authToken");
     if (!authToken) {
       setIsLoggedIn(false);
@@ -22,7 +22,6 @@ function AuthWrapper(props) {
       const response = await service.get("/auth/verify", {
         headers: { authorization: `Bearer ${authToken}` },
       });
-      console.log(response);
       setIsLoggedIn(true);
       setLoggedUserId(response.data._id);
       setIsAuthenticating(false);

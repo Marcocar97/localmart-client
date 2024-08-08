@@ -4,39 +4,57 @@
   padding: 2rem;
   text-align: center;
 }
+.offers-page { 
+  display: flex; padding: 20px; gap: 20px; 
+} 
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
+.offers-list { 
+  flex: 1; max-width: 300px; 
+} 
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+.offers-list-container { 
+  display: flex; flex-direction: column; 
+} 
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
+.offer-card-wrapper { 
+  cursor: pointer; 
+} 
 
-.card {
-  padding: 2em;
-}
+.offer-card-business { 
+  border: 1px solid #ddd; border-radius: 8px; padding: 16px; margin-bottom: 10px; transition: background-color 0.2s ease; 
+} 
 
-.read-the-docs {
-  color: #888;
-}
+.offer-card-business:hover {
+   background-color: #f5f5f5; 
+  } 
+  
+  .offer-card-business img { 
+    
+    max-width: 100%; height: auto; border-radius: 8px; margin-top: 10px; 
+  } 
+  
+  .offer-details { flex: 2; max-width: 600px; 
+   } 
+   
+   .offer-image { 
+    max-width: 100%; height: auto; border-radius: 8px; margin-top: 10px; 
+  } 
+  
+  .edit-offer-button { 
+    background-color: #007bff; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; 
+  } 
+  
+  .edit-offer-button:hover { 
+    background-color: #0056b3; 
+  } 
+  
+  .add-offer-button { 
+    background-color: #28a745; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; 
+  } 
+  
+  .add-offer-button:hover {
+     background-color: #218838;
+     } 
+     
+  .error-message { 
+    color: red; }  

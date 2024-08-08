@@ -20,7 +20,7 @@ const Login = () => {
       localStorage.setItem("authToken", response.data.authToken);
       await authenticateUser();
       if (userType === "business") {
-        navigate("/published-offers");
+        navigate("/my-offers");
       } else {
         navigate("/offers");
       }
@@ -30,31 +30,31 @@ const Login = () => {
   };
   return (
     <form onSubmit={handleSubmit}>
-      {" "}
+      
       <input
         type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="Email"
         required
-      />{" "}
+      />
       <input
         type="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         placeholder="Password"
         required
-      />{" "}
+      />
       <select
         value={userType}
         onChange={(e) => setUserType(e.target.value)}
         required
       >
-        {" "}
-        <option value="user">User</option>{" "}
-        <option value="business">Business</option>{" "}
-      </select>{" "}
-      <button type="submit">Login</button>{" "}
+        
+        <option value="user">User</option>
+        <option value="business">Business</option>
+      </select>
+      <button type="submit">Login</button>
     </form>
   );
 };

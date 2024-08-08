@@ -8,15 +8,17 @@ const Navbar = () => {
   const { isLoggedIn, userType, logout } = useContext(AuthContext);
   return (
     <nav>
-      {" "}
-      <Link to="/">Home</Link> 
+      
+      {!isLoggedIn && 
+      <Link to="/">Home</Link> }
+
       <Link to="/about-us">About Us</Link>
 
       {!isLoggedIn && <Link to="/login">Login</Link>}
 
       {isLoggedIn && userType === "user" && (
         <>
-          <Link to="/user-offers">Ofertas</Link>
+          <Link to="/offers">Ofertas</Link>
           <Link to="/favorites">Favoritos</Link>
           <Link to="/reservas">Reservas</Link>
           <Link to="/profile">Mi Perfil</Link>
@@ -25,13 +27,13 @@ const Navbar = () => {
       {isLoggedIn && userType === "business" && (
         <>
           
-          <Link to="/business-offers">Ofertas Publicadas</Link>
+          <Link to="/create-offer">Crear Oferta</Link>
           <Link to="/my-offers">Mis Ofertas</Link>
           <Link to="/my-business">Mi Negocio</Link>
         </>
       )}
 
-      {isLoggedIn && <button onClick={logout}>Logout</button>}{" "}
+      {isLoggedIn && <button onClick={logout}>Logout</button>}
     </nav>
   );
 };
