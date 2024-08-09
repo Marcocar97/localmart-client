@@ -36,6 +36,7 @@ const BusinessProfilePage = () => {
     };
     businessProfile();
   }, []);
+  
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
@@ -73,75 +74,75 @@ const BusinessProfilePage = () => {
   };
   return (
     <div className="business-profile-page">
-      {" "}
-      <h1>Edit Business Profile</h1>{" "}
+       
+      <h1>Edit Business Profile</h1> 
       <form onSubmit={handleUpdate}>
-        {" "}
+         
         <label>
-          {" "}
-          Business Name:{" "}
+           
+          Business Name: 
           <input
             type="text"
             value={businessName}
             onChange={(e) => setBusinessName(e.target.value)}
             required
-          />{" "}
-        </label>{" "}
+          /> 
+        </label> 
         <label>
-          {" "}
-          Description:{" "}
+           
+          Description: 
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
-          />{" "}
-        </label>{" "}
+          /> 
+        </label> 
         <label>
-          {" "}
-          Category:{" "}
+           
+          Category: 
           <input
             type="text"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
             required
-          />{" "}
-        </label>{" "}
+          /> 
+        </label> 
         <label>
-          {" "}
-          Location:{" "}
+           
+          Location: 
           <input
             type="text"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
             required
-          />{" "}
-        </label>{" "}
+          /> 
+        </label> 
         <label>
-          {" "}
-          Logo URL:{" "}
+           
+          Logo URL: 
           <input
             type="text"
             value={logo}
             onChange={(e) => setLogo(e.target.value)}
-          />{" "}
-        </label>{" "}
+          /> 
+        </label> 
         <label>
-          {" "}
-          Email:{" "}
+           
+          Email: 
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-          />{" "}
-        </label>{" "}
-        <button type="submit">Update Profile</button>{" "}
-      </form>{" "}
-      {error && <p className="error-message">{error}</p>}{" "}
+          /> 
+        </label> 
+        <button type="submit">Update Profile</button> 
+      </form> 
+      {error && <p className="error-message">{error}</p>} 
       <button onClick={handleDelete} className="delete-button">
-        {" "}
-        Delete Account{" "}
-      </button>{" "}
+         
+        Delete Account 
+      </button> 
     </div>
   );
 };

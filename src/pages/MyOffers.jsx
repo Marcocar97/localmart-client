@@ -12,7 +12,7 @@ const MyOffersPage = () => {
       const response = await service.get("/auth/business-offers");
       setOffers(response.data);
     } catch (error) {
-      setError("Failed to fetch offers");
+      setError("Failed offers");
       console.error(error);
     }
   };

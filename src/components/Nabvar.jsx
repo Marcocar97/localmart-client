@@ -20,8 +20,8 @@ const Navbar = () => {
         <>
           <Link to="/offers">Ofertas</Link>
           <Link to="/favorites">Favoritos</Link>
-          <Link to="/reservas">Reservas</Link>
-          <Link to="/profile">Mi Perfil</Link>
+          <Link to="/user-reservas">Reservas</Link>
+          <Link to="/my-profile">Mi Perfil</Link>
         </>
       )}
       {isLoggedIn && userType === "business" && (

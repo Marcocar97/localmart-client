@@ -1,7 +1,7 @@
 import service from "../../service/service.config";
 import { createContext, useEffect, useState } from "react";
 
-const AuthContext = createContext(); // Hook personalizado para usar el contexto AuthContext
+const AuthContext = createContext(); 
 
 function AuthWrapper(props) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -55,8 +55,8 @@ function AuthWrapper(props) {
   }
   return (
     <AuthContext.Provider value={passedContext}>
-      {" "}
-      {props.children}{" "}
+      
+      {props.children}
     </AuthContext.Provider>
   );
 }
