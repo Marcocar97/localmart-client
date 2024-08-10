@@ -17,6 +17,7 @@ import HomePage from "./pages/HomePage";
 import UserProfilePage from "./pages/UserProfile";
 import ReservationsPage from "./pages/Reservation";
 import ReservaVerificationPage from "./pages/VerificaRserva";
+import FavoritesPage from "./pages/Favoritos";
 
 
 const App = () => {
@@ -34,6 +35,7 @@ const App = () => {
         <Route path="/offers" element={<User> <UserOffers /> </User>} />
         <Route path="/my-profile" element={<User> <UserProfilePage /> </User>} />
         <Route path="/user-reservas" element={<User> <ReservationsPage /> </User>} />
+        <Route path="/favorites" element={<User> <FavoritesPage /> </User>} />
         <Route path="/create-offer" element={<Business> <CreateOfferPage /> </Business>} />
         <Route path="/my-offers" element={<Business> <MyOffersPage /> </Business>} />
         <Route path="/edit-offer/:offerId" element={<Business> <EditOfferPage /> </Business>} />
