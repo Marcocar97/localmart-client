@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import service from "../../service/service.config";
 import { AuthContext } from "../context/auth.context";
 
-const UserProfilePage = () => {
+function UserProfilePage() {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");

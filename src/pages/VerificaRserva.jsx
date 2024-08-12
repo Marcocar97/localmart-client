@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import service from "../../service/service.config";
-const ReservaVerificationPage = () => {
+
+function ReservaVerificationPage()  {
+
   const [confirmationNumber, setConfirmationNumber] = useState("");
   const [reservation, setReservation] = useState(null);
   const [error, setError] = useState("");
+
   const handleSearch = async (e) => {
     e.preventDefault();
+
     try {
       const response = await service.get(`/auth/reservas/${confirmationNumber}`);
       setReservation(response.data);
@@ -16,6 +20,7 @@ const ReservaVerificationPage = () => {
       setError("Reservation not found");
     }
   };
+  
   return (
     <div className="reservation-verification-page">
        

@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import service from "../../service/service.config";
 import OfferCard from "../components/OfferCard"
 
-
-const FavoritesPage = () => {
+function FavoritesPage() {
 
   const [favorites, setFavorites] = useState([]);
   

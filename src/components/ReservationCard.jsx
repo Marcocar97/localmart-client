@@ -20,14 +20,14 @@ function ReservationCard({ reservation, onDelete }) {
   
   return (
     <div className="reservation-card">
-      {" "}
-      <h2>Reservation {reservation.confirmationNumber}</h2>{" "}
-      <p>Date: {new Date(reservation.createDate).toLocaleDateString()}</p>{" "}
-      <p>Offer: {reservation.offer.offerName}</p>{" "}
-      <p>User: {reservation.user.name}</p>{" "}
+       
+      <h2>Reservation {reservation.confirmationNumber}</h2> 
+      <p>Date: {new Date(reservation.createDate).toLocaleDateString()}</p> 
+      <p>Offer: {reservation.offer.offerName}</p> 
+      <p>User: {reservation.user.name}</p> 
       <button onClick={handleDelete} style={{ color: "red" }}>
-        {" "}
-        Delete Reservation{" "}
+         
+        Delete Reservation 
       </button>
     </div>
   );

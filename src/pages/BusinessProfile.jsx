@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import service from "../../service/service.config";
 import { AuthContext } from "../context/auth.context";
 
-const BusinessProfilePage = () => {
+function BusinessProfilePage() {
 
   const [businessName, setBusinessName] = useState("");
   const [description, setDescription] = useState("");
@@ -39,6 +39,7 @@ const BusinessProfilePage = () => {
   
   const handleUpdate = async (e) => {
     e.preventDefault();
+
     try {
       await service.put("/auth/business-profile", {
         businessName,
@@ -55,6 +56,7 @@ const BusinessProfilePage = () => {
       setError("Failed to update business profile");
     }
   };
+
   const handleDelete = async () => {
     if (window.confirm("Are you sure you want to delete your account?")) {
       try {
@@ -72,6 +74,7 @@ const BusinessProfilePage = () => {
       }
     }
   };
+  
   return (
     <div className="business-profile-page">
        

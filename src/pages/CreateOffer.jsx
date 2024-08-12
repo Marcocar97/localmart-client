@@ -1,8 +1,7 @@
 import React from "react";
 import OfferForm from "../components/OfferForm";
 
-
-const CreateOfferPage = () => {
+function CreateOfferPage() {
   return (
     <div className="create-offer-page">
       

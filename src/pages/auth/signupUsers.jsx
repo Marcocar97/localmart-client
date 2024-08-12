@@ -1,71 +1,92 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import service from "../../../service/service.config";
+import { Container, Typography, TextField, Button, Box } from "@mui/material";
 
-const SignupUserPage = () => {
+function SignupUserPage() {
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const [ errorMessage, setErrorMessage ] = useState(null)
-  
+  const [errorMessage, setErrorMessage] = useState(null);
+
   const navigate = useNavigate();
+
   const handleSignup = async (event) => {
     event.preventDefault();
+
     try {
       await service.post("/auth/signup/user", { email, password, name });
-      navigate("/login"); // Redirige al login después del registro exitoso
+      navigate("/login");
     } catch (error) {
-      console.error(error); // Maneja el error
+      console.error(error);
       if (error.response && error.response.status === 400) {
-        setErrorMessage(error.response.data.errorMessage)
+        setErrorMessage(error.response.data.errorMessage);
       } else {
-        // aqui deberiamos hacer un navigate a pagina de error si hay fallo del servidor
-      }  
+        setErrorMessage("An error occurred during signup.");
+      }
     }
   };
+  
   return (
-    <div>
-      {" "}
-      <h1>Signup User</h1>{" "}
-      <form onSubmit={handleSignup}>
-        {" "}
-        <label>
-          {" "}
-          Name:{" "}
-          <input
-            type="text"
+    <Container component="main" maxWidth="xs">
+       
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          mt: 8,
+        }}
+      >
+         
+        <Typography variant="h4" gutterBottom>
+           
+          Registrarme como usuario 
+        </Typography> 
+        <Box component="form" onSubmit={handleSignup} sx={{ mt: 3 }}>
+           
+          <TextField
+            margin="normal"
+            fullWidth
+            label="Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
-          />{" "}
-        </label>{" "}
-        <label>
-          {" "}
-          Email:{" "}
-          <input
+          /> 
+          <TextField
+            margin="normal"
+            fullWidth
+            label="Email"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-          />{" "}
-        </label>{" "}
-        <label>
-          {" "}
-          Password:{" "}
-          <input
+          /> 
+          <TextField
+            margin="normal"
+            fullWidth
+            label="Password"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-          />{" "}
-        </label>{" "}
-        <button type="submit">Sign Up</button>{" "}
-
-        {errorMessage && <p>{errorMessage}</p>}
-
-
-      </form>{" "}
-    </div>
+          /> 
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+          >
+             
+            Sign Up 
+          </Button> 
+          {errorMessage && (
+            <Typography color="error">{errorMessage}</Typography>
+          )} 
+        </Box> 
+      </Box> 
+    </Container>
   );
 };
 export default SignupUserPage;

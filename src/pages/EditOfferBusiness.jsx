@@ -1,8 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import service from "../../service/service.config";
+import {
+  Container,
+  Box,
+  Typography,
+  TextField,
+  Button,
+  Snackbar,
+  Alert,
+} from "@mui/material";
 
-const EditOfferPage = () => {
+function EditOfferPage()  {
   const { offerId } = useParams();
   const navigate = useNavigate();
   const [offerName, setOfferName] = useState("");
@@ -11,9 +20,9 @@ const EditOfferPage = () => {
   const [schedules, setSchedules] = useState("");
   const [image, setImage] = useState("");
   const [error, setError] = useState("");
+  const [openSnackbar, setOpenSnackbar] = useState(false);
 
   useEffect(() => {
-
     const offerDetails = async () => {
       try {
         const response = await service.get(`/auth/business-offers/${offerId}`);
@@ -23,9 +32,9 @@ const EditOfferPage = () => {
         setAvailability(offerData.availability);
         setSchedules(offerData.schedules);
         setImage(offerData.image);
-        console.log(response)
       } catch (error) {
         setError("Failed to fetch offer details");
+        setOpenSnackbar(true);
         console.error(error);
       }
     };
@@ -35,6 +44,7 @@ const EditOfferPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       const updatedOffer = {
         offerName,
@@ -47,6 +57,7 @@ const EditOfferPage = () => {
       navigate("/my-offers");
     } catch (error) {
       setError("Failed to update offer");
+      setOpenSnackbar(true);
       console.error(error);
     }
   };
@@ -57,71 +68,104 @@ const EditOfferPage = () => {
       navigate("/my-offers");
     } catch (error) {
       setError("Failed to delete offer");
+      setOpenSnackbar(true);
       console.error(error);
     }
   };
+
+  const handleCloseSnackbar = () => {
+    setOpenSnackbar(false);
+  };
+  
   return (
-    <div>
-      
-      <h1>Edit Offer</h1> {error && <p>{error}</p>}
-      <form onSubmit={handleSubmit}>
-        
-        <label>
-          
-          Offer Name:
-          <input
-            type="text"
+    <Container component="main" maxWidth="md">
+       
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          mt: 8,
+        }}
+      >
+         
+        <Typography variant="h4" gutterBottom>
+           
+          Editar Oferta
+        </Typography> 
+        {error && (
+          <Snackbar
+            open={openSnackbar}
+            autoHideDuration={6000}
+            onClose={handleCloseSnackbar}
+          >
+             
+            <Alert onClose={handleCloseSnackbar} severity="error">
+               
+              {error} 
+            </Alert> 
+          </Snackbar>
+        )} 
+        <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
+           
+          <TextField
+            margin="normal"
+            fullWidth
+            label="Nombre de la oferta"
             value={offerName}
             onChange={(e) => setOfferName(e.target.value)}
             required
-          />
-        </label>
-        <label>
-          
-          Description:
-          <textarea
+          /> 
+          <TextField
+            margin="normal"
+            fullWidth
+            label="Descripcion de la oferta"
+            multiline
+            rows={4}
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
-          />
-        </label>
-        <label>
-          
-          Availability:
-          <input
-            type="text"
+          /> 
+          <TextField
+            margin="normal"
+            fullWidth
+            label="Validez"
             value={availability}
             onChange={(e) => setAvailability(e.target.value)}
-          />
-        </label>
-        <label>
-          
-          Schedules:
-          <input
-            type="text"
+          /> 
+          <TextField
+            margin="normal"
+            fullWidth
+            label="Horarios"
             value={schedules}
             onChange={(e) => setSchedules(e.target.value)}
-          />
-        </label>
-        <label>
-          
-          Image URL:
-          <input
-            type="text"
+          /> 
+          <TextField
+            margin="normal"
+            fullWidth
+            label="Imagen de la oferta"
             value={image}
             onChange={(e) => setImage(e.target.value)}
-          />
-        </label>
-        <button type="submit">Update Offer</button>
-      </form>
-      <button
-        onClick={handleDelete}
-        style={{ marginTop: "20px", color: "red" }}
-      >
-        
-        Delete Offer
-      </button>
-    </div>
+          /> 
+          <Box sx={{ mt: 2, display: "flex", justifyContent: "space-between" }}>
+             
+            <Button type="submit" variant="contained" color="primary">
+               
+              Actualizar Oferta 
+            </Button> 
+            <Button
+              type="button"
+              variant="outlined"
+              color="error"
+              onClick={handleDelete}
+            >
+               
+              Borrar Oferta
+            </Button> 
+          </Box> 
+        </Box> 
+      </Box> 
+    </Container>
   );
 };
 export default EditOfferPage;

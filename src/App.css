@@ -6,4 +6,109 @@
 }
   
 /* HOME PAGE */
+.hero-section { 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  padding: 16px; 
+  background-color: #f5f5f5; 
+  margin-bottom: 16px; 
+} 
 
+.hero-section .content-box { 
+  display: flex; 
+  flex-direction: column; 
+  align-items: flex-start; 
+  text-align: center;
+} 
+
+.hero-section .title-box { 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  text-align: center; 
+  margin-bottom: 16px; 
+} 
+
+.hero-section .benefits { 
+  list-style: none; 
+  padding: 0; 
+  margin: 0; 
+  text-align: left; 
+} 
+
+.hero-section .benefit-item { 
+  margin: 8px 0; 
+} 
+
+.hero-section .image { 
+  width: 100%; 
+  height: auto; 
+  max-width: 1200px; 
+} 
+
+.feature-box { 
+  padding: 16px; 
+  text-align: center; 
+  height: 100%; 
+}  
+
+/* PAGINA OFERTAS USUARIOS*/
+
+.offer-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* LOGIN */
+
+.MuiContainer-root { 
+  background-color: #fafafa; 
+ } 
+ 
+  
+  .MuiTypography-h5 { 
+    margin-bottom: 16px;
+    font-weight: bold; 
+  } 
+  
+  .MuiButton-containedPrimary { 
+    background-color: #3f51b5; 
+    color: #ffffff; 
+  } 
+  
+  .MuiButton-containedPrimary:hover { 
+    background-color: #303f9f; 
+   }  
+
+  /*  NAVBAR */
+
+  .MuiAppBar-root { 
+    background-color: #3f51b5;  
+    box-shadow: none; 
+  } 
+  
+  .MuiToolbar-root { 
+    display: flex; 
+    justify-content: space-between; 
+  } 
+  
+  .navbar-button { transition: 
+    background-color 0.3s ease, color 0.3s ease; 
+    text-transform: none; 
+    margin-right: 16px; 
+   } 
+   
+   .navbar-button:hover { 
+    background-color: #303f9f; 
+    color: #ffffff; 
+  } 
+  
+  .MuiTypography-h6 { 
+    font-weight: 600; 
+  } 
+  
+  .MuiIconButton-root { 
+    color: #ffffff; 
+  }  
