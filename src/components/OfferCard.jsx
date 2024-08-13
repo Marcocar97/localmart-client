@@ -73,9 +73,17 @@ function OfferCard({ offer }) {
            
           {offer.offerName} 
         </Typography> 
+
         <Typography variant="body2" color="text.secondary">
 
           
+           
+          {offer.business.businessName} 
+        </Typography> 
+
+
+
+        <Typography variant="body2" color="text.secondary">
            
           {offer.description} 
         </Typography> 
