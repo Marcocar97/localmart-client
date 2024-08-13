@@ -35,7 +35,7 @@ function MyOffersPage() {
         console.error(error);
       }
     };
-    
+
     agregaOffers();
   }, []);
 
@@ -60,6 +60,7 @@ function MyOffersPage() {
   };
 
   return (
+
     <Container maxWidth="lg">
        
       <Snackbar
@@ -73,17 +74,21 @@ function MyOffersPage() {
           {error} 
         </Alert> 
       </Snackbar> 
-      <Grid container spacing={2} sx={{ marginTop: 2 }}>
+
+      <Grid container spacing={2} sx={{ marginTop: 2, height: "100vh", display: "flex" }}>
          
         {/* Lista de ofertas */} 
         <Grid
           item
-          xs={3}
+          xs={12}
+          sm={4}
+          md={3}
           sx={{
-            overflowY: "scroll",
+            overflowY: "auto",
             backgroundColor: "#f5f5f5",
-            height: "80vh",
+            height: "100%",
             padding: 2,
+            borderRight: "1px solid #ddd"
           }}
         >
            
@@ -131,12 +136,14 @@ function MyOffersPage() {
             <Typography>No hay ofertas disponibles.</Typography>
           )} 
         </Grid> 
+
         {/* Derecha: Detalles de la oferta seleccionada */} 
-        <Grid item xs={9} sx={{ padding: 2 }}>
+
+        <Grid item xs={12} sm={8} md={9} sx={{ padding: 2, display: "flex", flexDirection: "column", height: "100%" }}>
            
           {selectedOffer ? (
             <Box
-              sx={{ height: "100%", display: "flex", flexDirection: "column" }}
+              sx={{ flexGrow: 1, overflowY: "auto"}}
             >
                
               <OfferCardBusiness offer={selectedOffer} /> 

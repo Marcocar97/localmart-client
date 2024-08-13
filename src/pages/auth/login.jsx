@@ -10,7 +10,7 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userType, setUserType] = useState("user");
-  const [errorMessage, setErrorMessage] = useState(null)
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const { authenticateUser } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -107,7 +107,7 @@ function Login() {
             sx={{ mt: 3, mb: 2 }}
           >
             
-            Login  
+            Iniciar secion  
           </Button>  
           {errorMessage && <p>{errorMessage}</p>}
         </Box>  

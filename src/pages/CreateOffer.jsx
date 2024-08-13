@@ -5,7 +5,7 @@ function CreateOfferPage() {
   return (
     <div className="create-offer-page">
       
-      <h1>Create a New Offer</h1> <OfferForm />
+      <h1>Crear una nueva oferta</h1> <OfferForm />
     </div>
   );
 };

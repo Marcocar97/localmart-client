@@ -56,7 +56,7 @@ function Navbar() {
                 className="navbar-button"
               >
                  
-                About Us 
+                Acerca de nosotros 
               </Button> 
               <Button
                 color="inherit"

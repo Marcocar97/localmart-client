@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import service from "../../service/service.config";
 import { AuthContext } from "../context/auth.context";
+import { Container, TextField, Button, Typography, Box, Snackbar, Alert, Grid } from "@mui/material";
 
 function BusinessProfilePage() {
 
@@ -12,13 +13,14 @@ function BusinessProfilePage() {
   const [logo, setLogo] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
-
+  const [openSnackbar, setOpenSnackbar] = useState(false);
 
   const navigate = useNavigate();
 
-  const {logout} = useContext(AuthContext)
+  const { logout } = useContext(AuthContext);
 
   useEffect(() => {
+
     const businessProfile = async () => {
       try {
         const response = await service.get("/auth/business-profile");
@@ -32,14 +34,16 @@ function BusinessProfilePage() {
       } catch (error) {
         console.error("Error fetching business data", error);
         setError("Failed to fetch business data");
+        setOpenSnackbar(true);
       }
     };
+
     businessProfile();
+
   }, []);
-  
+
   const handleUpdate = async (e) => {
     e.preventDefault();
-
     try {
       await service.put("/auth/business-profile", {
         businessName,
@@ -49,11 +53,13 @@ function BusinessProfilePage() {
         logo,
         email,
       });
+
       alert("Business profile updated successfully!");
-      navigate("/my-offers")
+      navigate("/my-offers");
     } catch (error) {
       console.error("Error updating business profile", error);
       setError("Failed to update business profile");
+      setOpenSnackbar(true);
     }
   };
 
@@ -62,91 +68,135 @@ function BusinessProfilePage() {
       try {
         await service.delete("/auth/business-profile");
         alert("Business account deleted successfully!");
-
-       
         logout();
-
-
         navigate("/");
       } catch (error) {
         console.error("Error deleting business account", error);
         setError("Failed to delete business account");
+        setOpenSnackbar(true);
       }
     }
   };
-  
+
+  const handleCloseSnackbar = () => {
+    setOpenSnackbar(false);
+
+  };
+
   return (
-    <div className="business-profile-page">
+    <Container maxWidth="md">
        
-      <h1>Edit Business Profile</h1> 
-      <form onSubmit={handleUpdate}>
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={6000}
+        onClose={handleCloseSnackbar}
+      >
          
-        <label>
+        <Alert onClose={handleCloseSnackbar} severity="error">
            
-          Business Name: 
-          <input
-            type="text"
-            value={businessName}
-            onChange={(e) => setBusinessName(e.target.value)}
-            required
-          /> 
-        </label> 
-        <label>
-           
-          Description: 
-          <textarea
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            required
-          /> 
-        </label> 
-        <label>
-           
-          Category: 
-          <input
-            type="text"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-            required
-          /> 
-        </label> 
-        <label>
-           
-          Location: 
-          <input
-            type="text"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-            required
-          /> 
-        </label> 
-        <label>
-           
-          Logo URL: 
-          <input
-            type="text"
-            value={logo}
-            onChange={(e) => setLogo(e.target.value)}
-          /> 
-        </label> 
-        <label>
-           
-          Email: 
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          /> 
-        </label> 
-        <button type="submit">Update Profile</button> 
-      </form> 
-      {error && <p className="error-message">{error}</p>} 
-      <button onClick={handleDelete} className="delete-button">
+          {error} 
+        </Alert> 
+      </Snackbar> 
+      <Typography variant="h4" gutterBottom>
          
-        Delete Account 
-      </button> 
-    </div>
+        Editar la informacion de mi negocio
+      </Typography> 
+      <Box component="form" onSubmit={handleUpdate} sx={{ mt: 2 }}>
+         
+        <Grid container spacing={2}>
+           
+          <Grid item xs={12} sm={6}>
+             
+            <TextField
+              label="Business Name"
+              variant="outlined"
+              fullWidth
+              value={businessName}
+              onChange={(e) => setBusinessName(e.target.value)}
+              required
+            /> 
+          </Grid> 
+          <Grid item xs={12} sm={6}>
+             
+            <TextField
+              label="Category"
+              variant="outlined"
+              fullWidth
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              required
+            /> 
+          </Grid> 
+          <Grid item xs={12}>
+             
+            <TextField
+              label="Location"
+              variant="outlined"
+              fullWidth
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              required
+            /> 
+          </Grid> 
+          <Grid item xs={12}>
+             
+            <TextField
+              label="Description"
+              variant="outlined"
+              fullWidth
+              multiline
+              rows={4}
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              required
+            /> 
+          </Grid> 
+          <Grid item xs={12}>
+             
+            <TextField
+              label="Logo URL"
+              variant="outlined"
+              fullWidth
+              value={logo}
+              onChange={(e) => setLogo(e.target.value)}
+            /> 
+          </Grid> 
+          <Grid item xs={12}>
+             
+            <TextField
+              label="Email"
+              variant="outlined"
+              fullWidth
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            /> 
+          </Grid> 
+          <Grid item xs={12} sx={{ mt: 2 }}>
+             
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              sx={{ mr: 2 }}
+            >
+               
+              Actualizar mis informacion 
+            </Button> 
+            <Button
+              type="button"
+              variant="outlined"
+              color="error"
+              onClick={handleDelete}
+            >
+               
+              Borrar mi cuenta 
+            </Button> 
+          </Grid> 
+        </Grid> 
+      </Box> 
+    </Container>
   );
-};
+}
 export default BusinessProfilePage;

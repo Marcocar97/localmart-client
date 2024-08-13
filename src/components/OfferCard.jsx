@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 
 function OfferCard({ offer }) {
+
   console.log(offer.business.businessName)
 
   const [isFavorite, setIsFavorite] = useState(false);
@@ -65,7 +66,7 @@ function OfferCard({ offer }) {
       {offer.image && (
         <CardMedia
           component="img"
-          height="140"
+          height="250"
           image={offer.image}
           alt={offer.offerName}
         />
@@ -77,32 +78,18 @@ function OfferCard({ offer }) {
           {offer.offerName} 
         </Typography> 
 
-        <Typography gutterBottom variant="h5" component="div">
-           
-          {offer.business.businessName} 
-        </Typography> 
-
+        
         <Typography variant="body2" color="text.secondary">
-
-          
            
-          {offer.business.businessName} 
-        </Typography> 
-
-
+          Comercio: {offer.business.businessName} 
+           </Typography>
 
         <Typography variant="body2" color="text.secondary">
            
-          {offer.description} 
-        </Typography> 
-        <Typography variant="body2" color="text.secondary">
-           
-          Validez: {offer.availability} 
-        </Typography> 
-        <Typography variant="body2" color="text.secondary">
-           
-          Horarios: {offer.schedules} 
-        </Typography> 
+          Ubicado en: {offer.business.location} 
+           </Typography>
+           <br />
+
         <Button
           onClick={handleAddReservation}
           variant="contained"
@@ -118,6 +105,48 @@ function OfferCard({ offer }) {
         >
            
           {isFavorite ? "💔 Quitar de favoritos" : "❤️ Agregar a Favoritos"} 
+        </Button> 
+        <br />
+<br />
+        <Typography variant="body2" color="text.secondary">
+        <Typography gutterBottom variant="h5" component="div">
+           
+           Descripcion de la oferta 
+         </Typography> 
+         {offer.description} 
+        </Typography> 
+        <br />
+        <Typography variant="body2" color="text.secondary">
+
+        <Typography gutterBottom variant="h5" component="div">
+           
+           Informacion adicional 
+         </Typography> 
+           
+          <b>Validez: </b> {offer.availability} 
+        </Typography> 
+        <Typography variant="body2" color="text.secondary">
+           
+          <b>Horarios: </b>  {offer.schedules} 
+        </Typography> 
+        <br />
+        <Typography variant="body2" color="text.secondary">
+        <Typography gutterBottom variant="h5" component="div">
+           
+           Acerca del comercio 
+         </Typography> 
+         {offer.business.description} 
+         <br />
+         {offer.business.email} 
+        </Typography> 
+        <br />
+        <Button
+          onClick={handleAddReservation}
+          variant="contained"
+          color="primary"
+        >
+           
+          Reservar Oferta 
         </Button> 
       </CardContent> 
     </Card>

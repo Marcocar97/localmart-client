@@ -21,13 +21,13 @@ function ReservationCard({ reservation, onDelete }) {
   return (
     <div className="reservation-card">
        
-      <h2>Reservation {reservation.confirmationNumber}</h2> 
-      <p>Date: {new Date(reservation.createDate).toLocaleDateString()}</p> 
-      <p>Offer: {reservation.offer.offerName}</p> 
-      <p>User: {reservation.user.name}</p> 
+      <h2>Numero de confirmacion: {reservation.confirmationNumber}</h2> 
+      <p>Fecha: {new Date(reservation.createDate).toLocaleDateString()}</p> 
+      <p>Oferta: {reservation.offer.offerName}</p> 
+      <p>Nombre del cliente: {reservation.user.name}</p> 
       <button onClick={handleDelete} style={{ color: "red" }}>
          
-        Delete Reservation 
+        Cancelar reserva 
       </button>
     </div>
   );
