@@ -5,6 +5,7 @@ import { Grid, Paper, Typography, TextField } from "@mui/material";
 
 function UserOffers() {
 
+
   const [offers, setOffers] = useState([]);
   const [filteredOffers, setFilteredOffers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -34,7 +35,7 @@ function UserOffers() {
     );
     setFilteredOffers(filtered);
   };
-  
+
   const handleSelectOffer = (offer) => {
     setSelectedOffer(offer);
   };

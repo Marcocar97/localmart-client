@@ -9,11 +9,13 @@ import {
 } from "@mui/material";
 
 function OfferCard({ offer }) {
+  console.log(offer.business.businessName)
 
   const [isFavorite, setIsFavorite] = useState(false);
+  
 
   useEffect(() => {
-  console.log(offer.business)
+  
     const checkIfFavorite = async () => {
       try {
         const response = await service.get("/auth/user-favorites");
@@ -56,6 +58,7 @@ function OfferCard({ offer }) {
   };
 
 
+
   return (
     <Card>
        
@@ -74,6 +77,11 @@ function OfferCard({ offer }) {
           {offer.offerName} 
         </Typography> 
 
+        <Typography gutterBottom variant="h5" component="div">
+           
+          {offer.business.businessName} 
+        </Typography> 
+
         <Typography variant="body2" color="text.secondary">
 
           
@@ -89,11 +97,11 @@ function OfferCard({ offer }) {
         </Typography> 
         <Typography variant="body2" color="text.secondary">
            
-          Availability: {offer.availability} 
+          Validez: {offer.availability} 
         </Typography> 
         <Typography variant="body2" color="text.secondary">
            
-          Schedules: {offer.schedules} 
+          Horarios: {offer.schedules} 
         </Typography> 
         <Button
           onClick={handleAddReservation}
