@@ -7,11 +7,12 @@ import imag2 from "../pictures/Business.png";
 import "../App.css";
 
 function HomePage() {
+
   return (
     <Container>
            
       {/* USUARIOS */}     
-      <Paper className="hero-section">
+      <Paper className="hero-section" sx={{backgroundColor: "yellow"}}>
              
         <Box className="content-box">
                
@@ -55,40 +56,37 @@ function HomePage() {
                  
             <Grid item xs={12} md={4}>
                    
-              <Paper className="feature-box">
+              <Paper className="feature-box"  sx={{backgroundColor: "#b4b7f3", color: "white"}}>
                      
                 <Typography variant="h6">Ahorra</Typography>     
                 <br />
                 <Typography variant="body2">
                        
-                  Con las ofertas que tenemos en nuestra plataforma ahorrar será
-                  más fácil que nunca     
+                  Con nuestras ofertas ahorrar será más fácil que nunca     
                 </Typography>     
               </Paper>     
             </Grid>     
             <Grid item xs={12} md={4}>
                    
-              <Paper className="feature-box">
+              <Paper className="feature-box"  sx={{backgroundColor: "#b4b7f3", color: "white"}}>
                      
                 <Typography variant="h6">Controla tu dinero</Typography>  
                 <br />   
                 <Typography variant="body2">
                        
-                  Reserva las ofertas que más te convengan, puedes cancelarlas
-                  sin gastos ni comisiones     
+                  Reserva las ofertas que más te convengan   
                 </Typography>     
               </Paper>     
             </Grid>     
             <Grid item xs={12} md={4}>
                    
-              <Paper className="feature-box">
+              <Paper className="feature-box"  sx={{backgroundColor: "#b4b7f3", color: "white"}}>
                      
                 <Typography variant="h6">Ofertas locales</Typography>     
                 <br />
                 <Typography variant="body2">
                        
-                  Acceso exclusivo a fantásticas ofertas en tu panadería local,
-                  tu bar habitual o tu restaurante favorito     
+                  Acceso exclusivo a fantásticas ofertas en tu barrio    
                 </Typography>     
               </Paper>     
             </Grid>     
@@ -103,7 +101,7 @@ function HomePage() {
       <br />
 
       {/* BUSINESS */}     
-      <Paper className="hero-section">
+      <Paper className="hero-section" sx={{backgroundColor: "yellow"}}>
              
         <Box className="content-box">
                
@@ -145,9 +143,9 @@ function HomePage() {
           </Box>     
           <Grid container spacing={4} mt={4}>
                  
-            <Grid item xs={12} md={4}>
+            <Grid item xs={12} md={4} >
                    
-              <Paper className="feature-box">
+              <Paper className="feature-box" sx={{backgroundColor: "#b4b7f3", color: "white"}}>
                      
                 <Typography variant="h6">Publicidad</Typography>     
                 <br />
@@ -158,7 +156,7 @@ function HomePage() {
             </Grid>     
             <Grid item xs={12} md={4}>
                    
-              <Paper className="feature-box">
+              <Paper className="feature-box"  sx={{backgroundColor: "#b4b7f3", color: "white"}}>
                      
                 <Typography variant="h6">Manejar tu negocio</Typography>    
                 <br /> 
@@ -169,7 +167,7 @@ function HomePage() {
             </Grid>     
             <Grid item xs={12} md={4}>
                    
-              <Paper className="feature-box">
+              <Paper className="feature-box"  sx={{backgroundColor: "#b4b7f3", color: "white"}}>
                      
                 <Typography variant="h6">Ventas</Typography>    
                 <br /> 
@@ -185,6 +183,7 @@ function HomePage() {
           <img className="image" src={imag2} alt="Business promotion" />     
         </Box>     
       </Paper>     
+      <br />
     </Container>
   );
 }

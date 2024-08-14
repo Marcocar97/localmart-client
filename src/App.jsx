@@ -18,6 +18,8 @@ import UserProfilePage from "./pages/UserProfile";
 import ReservationsPage from "./pages/Reservation";
 import ReservaVerificationPage from "./pages/VerificaRserva";
 import FavoritesPage from "./pages/Favoritos";
+import Footer from "./components/Footer";
+import AboutUsPage from "./pages/AboutUs";
 
 
 const App = () => {
@@ -29,6 +31,7 @@ const App = () => {
 
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/about-us" element={<AboutUsPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup/user" element={<SignupUserPage />} />
         <Route path="/signup/business" element={<SignupBusinessPage />} />
@@ -42,6 +45,8 @@ const App = () => {
         <Route path="/my-business" element={<Business> <BusinessProfilePage /> </Business>} />
         <Route path="/verificar" element={ <Business> <ReservaVerificationPage /> </Business>} />
       </Routes>
+
+      <Footer />
     </>
   );
 };
