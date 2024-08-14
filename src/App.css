@@ -1,7 +1,6 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
   
@@ -66,6 +65,7 @@
 
 .MuiContainer-root { 
   background-color: #fafafa; 
+  padding-bottom: 24px;
  } 
  
   .MuiTypography-h5 { 
