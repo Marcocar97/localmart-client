@@ -2,25 +2,30 @@ import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import service from "../../service/service.config";
 import { AuthContext } from "../context/auth.context";
-import { Container, TextField, Button, Typography, Box, Snackbar, Alert, Grid } from "@mui/material";
-
+import {
+  Container,
+  TextField,
+  Button,
+  Typography,
+  Box,
+  Snackbar,
+  Alert,
+  Grid,
+  Input,
+} from "@mui/material";
 function BusinessProfilePage() {
-
   const [businessName, setBusinessName] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   const [location, setLocation] = useState("");
   const [logo, setLogo] = useState("");
+  const [logoFile, setLogoFile] = useState(null);
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [openSnackbar, setOpenSnackbar] = useState(false);
-
   const navigate = useNavigate();
-
   const { logout } = useContext(AuthContext);
-
   useEffect(() => {
-
     const businessProfile = async () => {
       try {
         const response = await service.get("/auth/business-profile");
@@ -37,23 +42,23 @@ function BusinessProfilePage() {
         setOpenSnackbar(true);
       }
     };
-
     businessProfile();
-
   }, []);
-
   const handleUpdate = async (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append("businessName", businessName);
+    formData.append("description", description);
+    formData.append("category", category);
+    formData.append("location", location);
+    formData.append("email", email);
+    if (logoFile) {
+      formData.append("logo", logoFile);
+    }
     try {
-      await service.put("/auth/business-profile", {
-        businessName,
-        description,
-        category,
-        location,
-        logo,
-        email,
+      await service.put("/auth/business-profile", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
       });
-
       alert("Business profile updated successfully!");
       navigate("/my-offers");
     } catch (error) {
@@ -62,7 +67,6 @@ function BusinessProfilePage() {
       setOpenSnackbar(true);
     }
   };
-
   const handleDelete = async () => {
     if (window.confirm("Are you sure you want to delete your account?")) {
       try {
@@ -77,36 +81,32 @@ function BusinessProfilePage() {
       }
     }
   };
-
   const handleCloseSnackbar = () => {
     setOpenSnackbar(false);
-
   };
-
   return (
     <Container maxWidth="md">
-       
+     
       <Snackbar
         open={openSnackbar}
         autoHideDuration={6000}
         onClose={handleCloseSnackbar}
       >
-         
+       
         <Alert onClose={handleCloseSnackbar} severity="error">
-           
-          {error} 
-        </Alert> 
-      </Snackbar> 
+         
+          {error}{" "}
+        </Alert>{" "}
+      </Snackbar>{" "}
       <Typography variant="h4" gutterBottom>
-         
-        Editar la informacion de mi negocio
-      </Typography> 
+       
+        Editar la informacion de mi negocio{" "}
+      </Typography>{" "}
       <Box component="form" onSubmit={handleUpdate} sx={{ mt: 2 }}>
-         
+       
         <Grid container spacing={2}>
-           
+         
           <Grid item xs={12} sm={6}>
-             
             <TextField
               label="Business Name"
               variant="outlined"
@@ -114,10 +114,10 @@ function BusinessProfilePage() {
               value={businessName}
               onChange={(e) => setBusinessName(e.target.value)}
               required
-            /> 
-          </Grid> 
+            />{" "}
+          </Grid>{" "}
           <Grid item xs={12} sm={6}>
-             
+           
             <TextField
               label="Category"
               variant="outlined"
@@ -125,10 +125,10 @@ function BusinessProfilePage() {
               value={category}
               onChange={(e) => setCategory(e.target.value)}
               required
-            /> 
-          </Grid> 
+            />{" "}
+          </Grid>{" "}
           <Grid item xs={12}>
-             
+           
             <TextField
               label="Location"
               variant="outlined"
@@ -136,10 +136,10 @@ function BusinessProfilePage() {
               value={location}
               onChange={(e) => setLocation(e.target.value)}
               required
-            /> 
-          </Grid> 
+            />{" "}
+          </Grid>{" "}
           <Grid item xs={12}>
-             
+           
             <TextField
               label="Description"
               variant="outlined"
@@ -149,20 +149,19 @@ function BusinessProfilePage() {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               required
-            /> 
-          </Grid> 
+            />{" "}
+          </Grid>{" "}
           <Grid item xs={12}>
-             
-            <TextField
-              label="Logo URL"
-              variant="outlined"
+            <p>Sube un nuevo logo</p>
+            <Input
+              type="file"
               fullWidth
-              value={logo}
-              onChange={(e) => setLogo(e.target.value)}
-            /> 
-          </Grid> 
+              sx={{ mb: 2 }}
+              onChange={(e) => setLogoFile(e.target.files[0])}
+            />{" "}
+          </Grid>{" "}
           <Grid item xs={12}>
-             
+           
             <TextField
               label="Email"
               variant="outlined"
@@ -171,31 +170,31 @@ function BusinessProfilePage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-            /> 
-          </Grid> 
+            />{" "}
+          </Grid>{" "}
           <Grid item xs={12} sx={{ mt: 2 }}>
-             
+           
             <Button
               type="submit"
               variant="contained"
               color="primary"
               sx={{ mr: 2 }}
             >
-               
-              Actualizar mis informacion 
-            </Button> 
+             
+              Actualizar mis informacion{" "}
+            </Button>{" "}
             <Button
               type="button"
               variant="outlined"
               color="error"
               onClick={handleDelete}
             >
-               
-              Borrar mi cuenta 
-            </Button> 
-          </Grid> 
-        </Grid> 
-      </Box> 
+             
+              Borrar mi cuenta{" "}
+            </Button>{" "}
+          </Grid>{" "}
+        </Grid>{" "}
+      </Box>{" "}
     </Container>
   );
 }

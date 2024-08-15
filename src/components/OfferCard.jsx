@@ -135,6 +135,8 @@ function OfferCard({ offer }) {
            
            Acerca del comercio 
          </Typography> 
+         {offer.business.category}
+         <br />
          {offer.business.description} 
          <br />
          {offer.business.email} 

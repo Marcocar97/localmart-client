@@ -18,7 +18,6 @@ function ReservaVerificationPage() {
         `/auth/reservas/${confirmationNumber}`
       );
       setReservation(response.data);
-      setError(null);
     } catch (error) {
       if (error.response && error.response.status === 400) {
         setErrorMessage(error.response.data.errorMessage);
@@ -34,8 +33,9 @@ function ReservaVerificationPage() {
     setOpenSnackbar(false);
 
   };
-  
+
   return (
+
     <Container maxWidth="sm">
        
       <Snackbar

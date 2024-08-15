@@ -72,6 +72,10 @@
     margin-bottom: 16px;
     font-weight: bold; 
   } 
+
+  Div.MuiBox-root {
+    margin: 1px;
+  }
   
   .MuiButton-containedPrimary { 
     background-color: #3f51b5; 

@@ -12,7 +12,7 @@ function HomePage() {
     <Container>
            
       {/* USUARIOS */}     
-      <Paper className="hero-section" sx={{backgroundColor: "yellow"}}>
+      <Paper className="hero-section" sx={{backgroundColor: "yellow", color: "#000080"}}>
              
         <Box className="content-box">
                
@@ -56,7 +56,7 @@ function HomePage() {
                  
             <Grid item xs={12} md={4}>
                    
-              <Paper className="feature-box"  sx={{backgroundColor: "#b4b7f3", color: "white"}}>
+              <Paper className="feature-box"  sx={{backgroundColor: "#6c5fcb", color: "white"}}>
                      
                 <Typography variant="h6">Ahorra</Typography>     
                 <br />
@@ -68,7 +68,7 @@ function HomePage() {
             </Grid>     
             <Grid item xs={12} md={4}>
                    
-              <Paper className="feature-box"  sx={{backgroundColor: "#b4b7f3", color: "white"}}>
+              <Paper className="feature-box"  sx={{backgroundColor: "#6c5fcb", color: "white"}}>
                      
                 <Typography variant="h6">Controla tu dinero</Typography>  
                 <br />   
@@ -80,7 +80,7 @@ function HomePage() {
             </Grid>     
             <Grid item xs={12} md={4}>
                    
-              <Paper className="feature-box"  sx={{backgroundColor: "#b4b7f3", color: "white"}}>
+              <Paper className="feature-box"  sx={{backgroundColor: "#6c5fcb", color: "white"}}>
                      
                 <Typography variant="h6">Ofertas locales</Typography>     
                 <br />
@@ -101,7 +101,7 @@ function HomePage() {
       <br />
 
       {/* BUSINESS */}     
-      <Paper className="hero-section" sx={{backgroundColor: "yellow"}}>
+      <Paper className="hero-section" sx={{backgroundColor: "yellow", color: "#000080"}}>
              
         <Box className="content-box">
                
@@ -145,7 +145,7 @@ function HomePage() {
                  
             <Grid item xs={12} md={4} >
                    
-              <Paper className="feature-box" sx={{backgroundColor: "#b4b7f3", color: "white"}}>
+              <Paper className="feature-box" sx={{backgroundColor: "#6c5fcb", color: "white"}}>
                      
                 <Typography variant="h6">Publicidad</Typography>     
                 <br />
@@ -156,7 +156,7 @@ function HomePage() {
             </Grid>     
             <Grid item xs={12} md={4}>
                    
-              <Paper className="feature-box"  sx={{backgroundColor: "#b4b7f3", color: "white"}}>
+              <Paper className="feature-box"  sx={{backgroundColor: "#6c5fcb", color: "white"}}>
                      
                 <Typography variant="h6">Manejar tu negocio</Typography>    
                 <br /> 
@@ -167,7 +167,7 @@ function HomePage() {
             </Grid>     
             <Grid item xs={12} md={4}>
                    
-              <Paper className="feature-box"  sx={{backgroundColor: "#b4b7f3", color: "white"}}>
+              <Paper className="feature-box"  sx={{backgroundColor: "#6c5fcb", color: "white"}}>
                      
                 <Typography variant="h6">Ventas</Typography>    
                 <br /> 

@@ -8,6 +8,7 @@ import {
   Button,
   Box,
   Input,
+  MenuItem
 } from "@mui/material";
 
 function SignupBusinessPage() {
@@ -49,7 +50,8 @@ function SignupBusinessPage() {
       }
     }
   };
-  
+  const categories = [ "Restaurantes y Comida", "Compras y Retail", "Salud y Belleza", "Servicios Profesionales", "Entretenimiento y Ocio", "Hogar y Jardín", "Automotriz", "Educación y Formación", "Turismo y Viajes", "Servicios para el Hogar", "Arte y Cultura" ];  
+
   return (
     <Container component="main" maxWidth="xs">
        
@@ -71,7 +73,7 @@ function SignupBusinessPage() {
           <TextField
             margin="normal"
             fullWidth
-            label="Business Name"
+            label="Nombre de tu negocio"
             value={businessName}
             onChange={(e) => setBusinessName(e.target.value)}
             required
@@ -79,23 +81,22 @@ function SignupBusinessPage() {
           <TextField
             margin="normal"
             fullWidth
-            label="Description"
+            label="Describe tu negocio"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
+            multiline
+            rows={3}
+            required
           /> 
+         <TextField margin="normal" fullWidth label="Categoría" select value={category} onChange={(e) => setCategory(e.target.value)} required > {categories.map((cat) => ( <MenuItem key={cat} value={cat}> {cat} </MenuItem> ))} </TextField>
+
           <TextField
             margin="normal"
             fullWidth
-            label="Category"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-          /> 
-          <TextField
-            margin="normal"
-            fullWidth
-            label="Location"
+            label="Ubicacion de tu negocio"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
+            required
           /> 
           <p>Agrega el logo de tu negocio</p>
           <Input
@@ -129,7 +130,7 @@ function SignupBusinessPage() {
             sx={{ mt: 3, mb: 2 }}
           >
              
-            Sign Up 
+            Registrar 
           </Button> 
           {errorMessage && (
             <Typography color="error">{errorMessage}</Typography>

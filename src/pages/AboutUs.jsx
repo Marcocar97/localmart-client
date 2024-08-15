@@ -6,15 +6,12 @@ function AboutUsPage() {
   return (
 
     <Container maxWidth="lg" sx={{ padding: "4rem 2rem" }}>
-      
-      <Typography variant="h2" gutterBottom sx={{ textAlign: "center", mb: 4 }}>
-        
-        Acerca de Nosotros 
-      </Typography> 
+    
       <Typography variant="h4" gutterBottom>
         
         Bienvenido a Localmart 
       </Typography> 
+      <br />
       <Typography variant="body1" paragraph>
         
         Localmart es una plataforma dinámica diseñada para conectar a los
@@ -22,6 +19,7 @@ function AboutUsPage() {
         ayudar a los usuarios a descubrir ofertas y promociones increíbles
         mientras asistimos a los negocios en la adquisición de nuevos clientes. 
       </Typography> 
+      <br />
       <Typography variant="h5" gutterBottom>
         
         Nuestra Visión 
