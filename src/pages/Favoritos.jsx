@@ -9,9 +9,12 @@ import {
   CircularProgress,
   Paper,
 } from "@mui/material";
+
 function FavoritesPage() {
+
   const [favorites, setFavorites] = useState([]);
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const fetchFavorites = async () => {
       try {
@@ -24,7 +27,9 @@ function FavoritesPage() {
       }
     };
     fetchFavorites();
+
   }, []);
+
   return (
     <Container maxWidth="lg" sx={{ marginTop: 4 }}>
        
@@ -67,7 +72,7 @@ function FavoritesPage() {
                  
                 <Typography variant="h6" color="textSecondary">
                    
-                  No favorites yet. 
+                  No hay favoritos aun. 
                 </Typography> 
               </Box> 
             </Grid>
