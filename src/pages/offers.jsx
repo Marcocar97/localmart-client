@@ -191,7 +191,7 @@ function UserOffers() {
                   {offer.offerName}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {offer.description}
+                  {offer.description.length > 60 ? offer.description.substring(0, 60) + "..." : offer.description}
                 </Typography>
               </Paper>
             ))
